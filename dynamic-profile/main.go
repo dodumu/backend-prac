@@ -44,7 +44,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		if age < 18 {
-			http.Error(w, "Under age limit", http.StatusConflict)
+			http.Error(w, "Under age limit", http.StatusForbidden)
 			return
 		}
 		student := Student{
@@ -67,6 +67,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
+	http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 }
 
 func main() {
