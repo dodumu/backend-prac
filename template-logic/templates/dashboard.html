@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+</head>
+
+<body>
+
+    <h1>Welcome {{.Name}}</h1>
+
+    <p>Department: {{.Department}}</p>
+
+    <!-- CONDITIONAL -->
+
+    {{if .IsAdmin}}
+
+        <h2>Admin Access Granted</h2>
+
+    {{else}}
+
+        <h2>Student Access Only</h2>
+
+    {{end}}
+
+    <!-- LOOP -->
+
+    <h3>Registered Courses</h3>
+
+    <ul>
+
+        {{range .Courses}}
+
+            <li>{{.}}</li>
+
+        {{end}}
+
+    </ul>
+    <h3>Skills</h3>
+    <ul>
+        {{range .Skills}}
+
+            <li>{{.}}</li>
+        
+        {{end}}
+    </ul>
+</body>
+
+</html>
