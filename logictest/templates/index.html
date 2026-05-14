@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>L2E Student Login</title>
+    </head>
+
+    <body>
+        <h1>This is the L2E Dashboard</h1>
+        <h2><strong>Enter your details to continue onbaording</strong></h2>
+
+        <form action="/" method="POST">
+            <label for="name">Enter Name</label>
+            <br>
+            <input type="text" name="name" id="name" required>
+            <br><br>
+            <label for="department">Select Department</label>
+            <br>
+            <select name="department" id="department" required>
+                <option value="AI/ML">AI/ML</option>
+                <option value="CyberSecurity">CyberSecurity</option>
+                <option value="UI/UX">UI/UX</option>
+                <option value="Data-Science">Data Science</option>
+                <option value="BlockChain">Block-Chain</option>
+                <option value="DevOps">DevOps</option>
+                <option value="Game Development">Game & Fun</option>
+                <option value="Full-Stack">Full-Stack</option>
+            </select>
+            <br><br>
+            <label for="Admin">Are You Admin?</label>
+            <br>
+            <input type="radio" name="Admin" id="Admin">
+            <br><br>
+            <label for="Fav-Languages">Languages</label>
+            <br>
+            <textarea name="FavLanguages" id="FavLanguages" placeholder="Enter Favorite Languages.."></textarea>
+            <br><br>
+            <label for="Hobbies">Hobbies</label>
+            <br>
+            <textarea name="Hobbies" id="Hobbies" placeholder="Type Hobbies"></textarea>
+            <br>
+            <label for="scholar">Do you have scholarship?</label>
+            <br>
+            <input type="radio" name="scholar" id="scholar">
+            <br><br>
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

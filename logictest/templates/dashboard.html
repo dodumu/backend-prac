@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>L2E Dashboard</title>
+    </head>
+
+    <body>
+        <h1>Welcome {{.Name}}</h1>
+
+        {{if .IsAdmin}}
+
+            <h2>User is logged as Admin</h2>
+        
+        {{else}}
+            <h2>User is logged as Student</h2>
+        {{end}}
+
+        <p>Current department of study <strong>{{.Department}}</strong></p>
+
+        <h3>Favorite Languages Spoken</h3>
+
+        <ul>
+            {{range .FavLanguages}}
+        
+                <li>{{.}}</li>
+
+            {{end}}
+        </ul>
+
+        <h3>Hobbies</h3>
+
+        <ul>
+            {{range .Hobbies}}
+                <li>{{.}}</li>
+            {{end}}
+        </ul>
+
+        {{if .HasScholarship}}
+            <p><strong>{{.Name}}</strong> is on Scholarship</p>
+        {{else}}
+            <p>Not on Scholarship</p>
+        {{end}}
+    </body>
+</html>
