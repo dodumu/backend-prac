@@ -1,48 +1,18 @@
-{{define "title"}}Home{{end}}
+{{define "title"}}HOME{{end}}
 
 {{define "content"}}
-    {{template "navbar" .}}
-
-    <h1>Welcome {{.Name}}</h1>
-    <p>Select a course of your choice</p>
+    
+    <h1>Welcome To L2E Login</h1>
 
     <form action="/" method="POST">
-        <label>Pick Course</label>
+        <label for="email">Email</label>
         <br>
-        <ul>
-            <li>
-                <label for="AI/ML">AI/ML</label>
-                <input type="checkbox" id="AI/ML" name="AI/ML" value="AI/ML">
-            </li>
-            <li>
-                <label for="CyberSecurity">CyberSecurity</label>
-                <input type="checkbox" id="CyberSecurity" name="CyberSecurity" value="CyberSecurity">
-            </li>
-            <li>
-                <label for="DevOps">DevOps</label>
-                <input type="checkbox" id="DevOps" name="DevOps" value="DevOps">
-            </li>
-            <li>
-                <label for="Data-Science">Data-Science</label>
-                <input type="checkbox" id="Data-Science" name="Data-Science" value="Data-Science">
-            </li>
-            <li>
-                <label for="Crypto-Currency">Crypto-Currency</label>
-                <input type="checkbox" id="Crypto-Currency" name="Crypto-Currency" value="Crypto-Currency">
-            </li>
-            <li>
-                <label for="Video-Game">Video Game</label>
-                <input type="checkbox" id="Video-Game" name="Video-Game" value="Video-Game">
-            </li>
-            <li>
-                <label for="Mobile-App">Mobile-App</label>
-                <input type="checkbox" id="Mobile-App" name="Mobile-App" value="Mobile-App">
-            </li>
-            <li>
-                <label for="Full-Stack">Full-Stack</label>
-                <input type="checkbox" id="Full-Stack" name="Full-Stack" value="Full-Stack">
-            </li>
-        </ul>
-        <button type="submit">Submit</button>
+        <input type="email" id="email" name="email">
+        <br><br>
+        <label for="password">Password</label>
+        <br>
+        <input type="password" id="password" name="password">
+        <br><br>
+        <button type="submit">Login</button>
     </form>
 {{end}}

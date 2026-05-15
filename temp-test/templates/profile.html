@@ -1,15 +1,14 @@
 {{define "title"}}Profile{{end}}
 
 {{define "content"}}
-    {{template "navbar" .}}
 
     <h1>Welcome {{.Name}}</h1>
-    <p>Your email is {{.Email}}</p>
 
-    <p>Your courses are:</p>
+    
     <ul>
         {{range .Courses}}
             <li>{{.}}</li>
         {{end}}
     </ul>
+
 {{end}}

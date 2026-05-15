@@ -1,12 +1,16 @@
 {{define "base"}}
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>{{template "title" .}}</title>
-    </head>
-    <body>
-        {{template "content" .}}
-        {{template "footer" .}}
-    </body>
-</html>
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>{{template "title" .}}</title>
+        </head>
+
+        <body>
+            {{template "navbar" .}}
+            
+            {{template "content" .}}
+
+            {{template "footer" .}}
+        </body>
+    </html>
 {{end}}

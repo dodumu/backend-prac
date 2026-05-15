@@ -5,95 +5,79 @@ import (
 	"net/http"
 )
 
-type User struct {
+type Data struct {
 	Name     string
-	Courses  []string
-	Password string
 	Email    string
+	Password string
+	Courses  []string
 }
 
-func baseTemp(w http.ResponseWriter, file string, data User) {
+func baseHandler(w http.ResponseWriter, page string, user Data) {
 	tmpl, err := template.ParseFiles(
 		"templates/base.html",
-		"templates/"+file,
-		"templates/parts/foot.html",
+		"templates/"+page,
 		"templates/parts/nav.html",
+		"templates/parts/footer.html",
 	)
-	if err != nil {
-		http.Error(w, "could not load file: "+err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	err = tmpl.ExecuteTemplate(w, "base", data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+
+	err = tmpl.ExecuteTemplate(w, "base", user)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
 
-func parseForm(r *http.Request) (User, bool) {
-	var user User
-	user.Name = r.FormValue("name")
-	user.Email = r.FormValue("email")
-	user.Password = r.FormValue("password")
-	verify := r.FormValue("verifypass")
+func HomeHandler(w http.ResponseWriter, r *http.Request) {
 
-	if verify != user.Password {
-		return user, false
+	if r.Method == http.MethodGet {
+		baseHandler(w, "home.html", Data{})
+		return
 	}
 
-	courses := []string{"CyberSecurity", "AI/ML", "DevOps", "Data-Science", "Crypto-Currency", "Video-Game", "Mobile-App", "Full-Stack"}
-	for _, c := range courses {
-		if r.FormValue(c) != "" {
-			user.Courses = append(user.Courses, c)
-		}
-	}
-	return user, true
-}
-
-func homeHandler(w http.ResponseWriter, r *http.Request) {
-	var user User
 	if r.Method == http.MethodPost {
-		var ok bool
-		user, ok = parseForm(r)
-		if !ok {
-			http.Error(w, "passwords do not match", http.StatusBadRequest)
+
+		email := r.FormValue("email")
+		password := r.FormValue("password")
+
+		if password != "David123" {
+			http.Error(w, "invalid password", http.StatusBadRequest)
 			return
 		}
+
+		http.Redirect(
+			w,
+			r,
+			"/profile?email="+email,
+			http.StatusSeeOther,
+		)
+		return
 	}
-	baseTemp(w, "home.html", user)
+
+	http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
 }
 
-func profileHandler(w http.ResponseWriter, r *http.Request) {
-	var user User
-	if r.Method == http.MethodPost {
-		var ok bool
-		user, ok = parseForm(r)
-		if !ok {
-			http.Error(w, "passwords do not match", http.StatusBadRequest)
-			return
-		}
-	}
-	baseTemp(w, "profile.html", user)
-}
+func ProfileHandler(w http.ResponseWriter, r *http.Request) {
 
-func courseHandler(w http.ResponseWriter, r *http.Request) {
-	var user User
-	if r.Method == http.MethodPost {
-		var ok bool
-		user, ok = parseForm(r)
-		if !ok {
-			http.Error(w, "passwords do not match", http.StatusBadRequest)
-			return
-		}
+	email := r.URL.Query().Get("email")
+
+	user := Data{
+		Name:  "David",
+		Email: email,
+		Courses: []string{
+			"AI/ML",
+			"DevOps",
+			"CyberSecurity",
+		},
 	}
-	baseTemp(w, "courses.html", user)
+
+	baseHandler(w, "profile.html", user)
 }
 
 func main() {
-	http.HandleFunc("/", homeHandler)
-	http.HandleFunc("/profile", profileHandler)
-	http.HandleFunc("/courses", courseHandler)
-
+	http.HandleFunc("/", HomeHandler)
+	http.HandleFunc("/profile", ProfileHandler)
 	http.ListenAndServe(":8071", nil)
 }
