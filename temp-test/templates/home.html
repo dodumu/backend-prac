@@ -1,0 +1,48 @@
+{{define "title"}}Home{{end}}
+
+{{define "content"}}
+    {{template "navbar" .}}
+
+    <h1>Welcome {{.Name}}</h1>
+    <p>Select a course of your choice</p>
+
+    <form action="/" method="POST">
+        <label>Pick Course</label>
+        <br>
+        <ul>
+            <li>
+                <label for="AI/ML">AI/ML</label>
+                <input type="checkbox" id="AI/ML" name="AI/ML" value="AI/ML">
+            </li>
+            <li>
+                <label for="CyberSecurity">CyberSecurity</label>
+                <input type="checkbox" id="CyberSecurity" name="CyberSecurity" value="CyberSecurity">
+            </li>
+            <li>
+                <label for="DevOps">DevOps</label>
+                <input type="checkbox" id="DevOps" name="DevOps" value="DevOps">
+            </li>
+            <li>
+                <label for="Data-Science">Data-Science</label>
+                <input type="checkbox" id="Data-Science" name="Data-Science" value="Data-Science">
+            </li>
+            <li>
+                <label for="Crypto-Currency">Crypto-Currency</label>
+                <input type="checkbox" id="Crypto-Currency" name="Crypto-Currency" value="Crypto-Currency">
+            </li>
+            <li>
+                <label for="Video-Game">Video Game</label>
+                <input type="checkbox" id="Video-Game" name="Video-Game" value="Video-Game">
+            </li>
+            <li>
+                <label for="Mobile-App">Mobile-App</label>
+                <input type="checkbox" id="Mobile-App" name="Mobile-App" value="Mobile-App">
+            </li>
+            <li>
+                <label for="Full-Stack">Full-Stack</label>
+                <input type="checkbox" id="Full-Stack" name="Full-Stack" value="Full-Stack">
+            </li>
+        </ul>
+        <button type="submit">Submit</button>
+    </form>
+{{end}}

@@ -1,0 +1,14 @@
+{{define "title"}}Courses{{end}}
+
+{{define "content"}}
+    {{template "navbar" .}}
+
+    <h1>Welcome to the Courses Page</h1>
+    <p>Your selected courses are displayed below:</p>
+
+    <ul>
+        {{range .Courses}}
+            <li>{{.}}</li>
+        {{end}}
+    </ul>
+{{end}}
