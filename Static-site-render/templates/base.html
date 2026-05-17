@@ -1,0 +1,15 @@
+{{define "base"}}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/css/style.css">
+        <title>{{template "title" .}}</title>
+    </head>
+
+    <body>
+        {{template "content" .}}
+
+        {{template "footer" .}}
+    </body>
+</html>
+{{end}}

@@ -1,0 +1,45 @@
+body{
+    background-color: lightblue;
+    font-family: Arial;
+
+}
+
+h1{
+    color: darkblue;
+    text-align: center;
+
+}
+
+p{
+    font-size: 18px;
+
+}
+
+nav{
+    background-color: darkblue;
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 20px;
+}
+nav a{
+    color: white;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+header{
+    color: pink;
+    align-content: center;
+   
+}
+
+button{
+    color: green;
+    display: flexbox;
+     background-color: pink;
+
+}

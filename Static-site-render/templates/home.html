@@ -1,0 +1,20 @@
+{{define "title"}}Home{{end}}
+
+{{define "content"}}
+    {{template "navbar" .}}
+
+    <h1>Welcome {{.Name}}</h1>
+
+   <form action="/" method="POST">
+     <p>
+        Welcome to the school ciricullum board
+    </p>
+
+    <p>Click to move to the Courses Page</p>
+
+    
+    <button type="submit">Courses</button>
+
+    
+   </form>
+{{end}}
